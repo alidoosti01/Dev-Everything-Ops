@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: $SERVICE_NAME-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: $SERVICE_NAME
+  template:
+    metadata:
+      labels:
+        app: $SERVICE_NAME
+    spec:
+      imagePullSecrets:
+      - name: my-registry
+      containers:
+      - name: $SERVICE_NAME
+        image: $CI_REGISTRY_IMAGE:$BUILD_VERSION
+        ports:
+        - containerPort: $SERVICE_PORT

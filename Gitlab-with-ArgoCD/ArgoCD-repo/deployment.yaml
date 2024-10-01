@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      imagePullSecrets:
+      - name: my-registry
+      containers:
+      - name: my-app
+        image: gitlab.{{ DOMAIN }}.ir:5050/test/ci-build:1.0.143
+        ports:
+        - containerPort: 80

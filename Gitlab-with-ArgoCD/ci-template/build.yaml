@@ -1,0 +1,14 @@
+build:
+    image: buildah/buildah
+    stage: build
+    before_script:
+        - export SERVICE_VERSION="$SERVICE_VERSION.$CI_PIPELINE_IID"
+        - echo "BUILD_VERSION=$SERVICE_VERSION" >> build.env
+        - cat build.env
+    script:
+        - podman login --username "$CI_REGISTRY_USER" --password "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
+        - buildah bud -t $CI_REGISTRY_IMAGE:$SERVICE_VERSION .
+        - buildah push $CI_REGISTRY_IMAGE:$SERVICE_VERSION
+    artifacts:
+        reports:
+            dotenv: build.env

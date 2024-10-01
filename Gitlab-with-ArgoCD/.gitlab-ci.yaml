@@ -1,0 +1,12 @@
+include:
+  - /ci-template/build.yaml
+  - /ci-template/deploy.yaml
+
+variables:
+  SERVICE_NAME: "my-app"
+  SERVICE_PORT: 80
+  SERVICE_VERSION: "1.0"
+
+stages:
+  - build
+  - deploy
