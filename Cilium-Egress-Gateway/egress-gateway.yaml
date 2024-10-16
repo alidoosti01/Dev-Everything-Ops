@@ -1,0 +1,16 @@
+apiVersion: cilium.io/v2
+kind: CiliumEgressGatewayPolicy
+metadata:
+  name: egress-gateway
+spec:
+  egressGateway:
+    nodeSelector:
+      matchLabels:
+        egress-node: "true"
+        kubernetes.io/hostname: "k8s-worker-2"
+  destinationCIDRs:
+    - "188.1xx.xxx.xx/32"
+  selectors:
+  - podSelector:
+      matchLabels:
+        app: my-app
