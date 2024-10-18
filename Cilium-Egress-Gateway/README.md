@@ -96,15 +96,19 @@ kubectl exec -it my-app -- curl http://destination-ip:port
 ```
 
 the routing in hubble CLI:
+
 ![Hubble CLI](../img/Cilium-hubble_observe_CLI.jpg)
 
 in GUI:
+
 ![hubble GUI](../img/Cilium-hubble_observe_GUI.jpg)
 
 application pod:
+
 ![application](../img/Cilium-test_application_communicate.jpg)
 
 destination logs:
+
 ![destination logs](../img/Cilium-curl_response.jpg)
 
 ## Adding a Label to the Node and Troubleshooting
