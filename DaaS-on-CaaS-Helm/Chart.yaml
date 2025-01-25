@@ -1,0 +1,4 @@
+apiVersion: v2
+name: kasm-caas
+description: A Helm chart for deploying kasm-caas application
+version: 0.1.0

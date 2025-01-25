@@ -1,0 +1,20 @@
+env:
+  VNC_PW: "password"
+replicaCount: 1
+image:
+  # Images was test: "ubuntu-focal-dind-rootless", "terminal", "desktop", "chrome", "tor-browser", "vlc", "edge", "only-office", "discord", "postman", "insomnia", "ubuntu-bionic-desktop:1.10.0"
+  repository: kasmweb/ubuntu-bionic-desktop
+  tag: 1.16.0
+  pullPolicy: IfNotPresent
+resources:
+  limits:
+    cpu: "1"
+    ephemeral-storage: 1G
+    memory: 2G
+  requests:
+    cpu: "1"
+    ephemeral-storage: 1G
+    memory: 2G
+service:
+  clusterIP: ""
+  loadBalancerIP: ""
